@@ -10,8 +10,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import STATICFILES_DIRS
+from django.utils.translation import ugettext as _
 
 BASE_DIR = os.path.dirname(__file__)
+path = lambda p: (os.path.join(BASE_DIR, p))
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,6 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 )
 
+LOCALE_PATHS = (path('locale'),)
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 )
 
 ROOT_URLCONF = 'urls'
@@ -68,9 +74,9 @@ DATABASES = {
         # Not used with sqlite3.
         'USER': 'root',
         # Not used with sqlite3.
-        'PASSWORD': 'temporal',
+        'PASSWORD': '',
         # Set to empty string for localhost. Not used with sqlite3.
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         # Set to empty string for default. Not used with sqlite3.
         'PORT': 3306,
         # MySQLdb prior to creating your tables
@@ -80,7 +86,12 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = ('en-us')
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('es', 'Spanish')
+)
 
 TIME_ZONE = 'UTC'
 
@@ -96,8 +107,10 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (path('task_manager/static/'),)
 
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, "task_manager", "templates").replace("\\", "/"),
+TEMPLATE_DIRS = (
+    path('task_manager/templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

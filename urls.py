@@ -8,6 +8,7 @@ urlpatterns = patterns('',
                        url(r'^$', 'task_manager.views.home'),
                        url(r'^login/', TemplateView.as_view(template_name='index.html')),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^testing/$', 'task_manager.views.testing'),
 )
 
 handler404 = 'task_manager.handlers.handle404'

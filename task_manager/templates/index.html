@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
 {% block content %}
-    <p><label>{% trans "This is the title." %}</label><input type="text" id="username"></p>
-    <p><label></label><input type="password" id="password"></p>
+    <p><label>{% blocktrans %}Username{% endblocktrans %}</label><input type="text" id="username"></p>
+    <p><label>{% blocktrans %}Password{% endblocktrans %}</label><input type="password" id="password"></p>
 {% endblock %}

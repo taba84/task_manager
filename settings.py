@@ -67,12 +67,13 @@ DATABASES = {
         # Not used with sqlite3.
         'USER': 'root',
         # Not used with sqlite3.
-        'PASSWORD': '',
+        'PASSWORD': 'temporal',
         # Set to empty string for localhost. Not used with sqlite3.
         'HOST': 'localhost',
         # Set to empty string for default. Not used with sqlite3.
         'PORT': 3306,
-        #'OPTIONS': {'init_command': 'SET storage_engine=InnoDB'},
+        # MySQLdb prior to creating your tables
+        'OPTIONS': {'init_command': 'SET storage_engine=InnoDB'},
     }
 }
 # Internationalization

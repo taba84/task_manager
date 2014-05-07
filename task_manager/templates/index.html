@@ -4,7 +4,15 @@
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 {% endblock %}
+{% block script %}
+    <script>
+        $(function () {
+            $("input[type=submit]").button()
+        })
+    </script>
+{% endblock %}
 {% block content %}
-    <p><label>{% blocktrans %}Username{% endblocktrans %}</label><input type="text" id="username"></p>
-    <p><label>{% blocktrans %}Password{% endblocktrans %}</label><input type="password" id="password"></p>
+    <p><label>{% blocktrans %}Username{% endblocktrans %}</label><input type="text" id="username" size="25"></p>
+    <p><label>{% blocktrans %}Password{% endblocktrans %}</label><input type="password" id="password" size="25"></p>
+    <input type="submit" value="Login">
 {% endblock %}

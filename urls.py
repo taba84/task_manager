@@ -6,9 +6,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        url(r'^$', 'task_manager.views.home'),
-                       url(r'^login/', TemplateView.as_view(template_name='index.html')),
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^testing/$', 'task_manager.views.testing'),
+                       url(r'^logout/$', 'task_manager.views.logout_view')
 )
 
 handler404 = 'task_manager.handlers.handle404'

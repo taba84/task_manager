@@ -2,6 +2,7 @@
 {% block content %}
     {% if user.is_authenticated %}
         User logged in
+        <a href="/logout/"><button>Logout</button></a>
     {% else %}
         User logged out
     {% endif %}

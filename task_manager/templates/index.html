@@ -12,7 +12,10 @@
     </script>
 {% endblock %}
 {% block content %}
-    <p><label>{% blocktrans %}Username{% endblocktrans %}</label><input type="text" id="username" size="25"></p>
-    <p><label>{% blocktrans %}Password{% endblocktrans %}</label><input type="password" id="password" size="25"></p>
-    <input type="submit" value="Login">
+    <form method="POST" action="/">{% csrf_token %}
+        <p><label>{% blocktrans %}Username{% endblocktrans %}</label><input type="text" name="username" id="username" size="25"></p>
+
+        <p><label>{% blocktrans %}Password{% endblocktrans %}</label><input type="password" name="password" id="password" size="25"></p>
+        <input type="submit" value="Login">
+    </form>
 {% endblock %}

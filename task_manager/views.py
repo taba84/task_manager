@@ -1,8 +1,10 @@
-from django.contrib.auth import authenticate
-from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse
+from django.contrib import auth
+from django.contrib.auth import authenticate, logout
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
+from task_manager.forms import LoginForm
+from users.models import Profile
 
 
 def testing(request):
@@ -11,11 +13,22 @@ def testing(request):
     return HttpResponse(output)
 
 
-@login_required(redirect_field_name='', login_url='/login/')
 def home(request):
-    user = authenticate(username='root', password='temporal')
-    if user:
-        print "DENTRO"
+    if request.user.is_authenticated():
+        return render(request, 'dashboard.html')
     else:
-        print "FUERA"
-    return render(request, 'dashboard.html')
+        if request.method == 'POST':
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                user = authenticate(username=request.POST["username"], password=request.POST["password"])
+                if user:
+                    auth.login(request, user)
+                    profile = Profile(user=user, last_login_source=request.META["REMOTE_ADDR"])
+                    profile.save()
+                    return render(request, 'dashboard.html')
+        return render(request, 'index.html')
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')

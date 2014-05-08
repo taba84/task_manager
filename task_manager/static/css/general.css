@@ -1,0 +1,27 @@
+
+.accordion > li:hover, .accordion > li:target {
+    color: #3e5706;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, .2);
+    background: #a5cd4e;
+    background: -moz-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a5cd4e), color-stop(100%, #6b8f1a));
+    background: -webkit-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    background: -o-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    background: -ms-linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+    background: linear-gradient(top, #a5cd4e 0%, #6b8f1a 100%);
+}
+
+.accordion > li:hover > span,
+.accordion > li:target > span {
+    color: #fdfdfd;;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, .35);
+    background: #3e5706;
+}
+
+.accordion li > .sub-menu {
+    display: none;
+}
+
+.accordion li:target > .sub-menu {
+    display: block;
+}

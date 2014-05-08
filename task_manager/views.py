@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, logout
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
+
 from task_manager.forms import LoginForm
 from users.models import Profile
 
